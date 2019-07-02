@@ -3,16 +3,16 @@ from ..utils import *
 from ..utils.SQL import *
 
 # TKinter for creating user interface
-import Tkinter as tk
-import ttk
-from tkFileDialog import askopenfilename
-from tkMessageBox import showwarning as WarnMsg
-from tkMessageBox import showinfo as InfoMsg
+import tkinter as tk
+import tkinter.ttk
+from tkinter.filedialog import askopenfilename
+from tkinter.messagebox import showwarning as WarnMsg
+from tkinter.messagebox import showinfo as InfoMsg
 
 # PyKinectTk Modules
-from Player import KinectDataPlayer
-from Convert import ConvertKinect
-from ProgressBar import GraphicalBar
+from .Player import KinectDataPlayer
+from .Convert import ConvertKinect
+from .ProgressBar import GraphicalBar
 
 class KinectDataSelect:
     """ Tkinter UI for selecting a processed Kinect file for playing back """
@@ -80,7 +80,7 @@ class KinectDataSelect:
 
     def get_streams(self):
         """ Returns the dictionary of stream names and the T/F flag to play them back """
-        return dict([(stream, val.get()) for stream, val in self._streams.items()])
+        return dict([(stream, val.get()) for stream, val in list(self._streams.items())])
 
     def selected(self):
         """ Returns the index of the selected item """
@@ -107,11 +107,11 @@ class KinectDataSelect:
 
     def audio_paths(self, pid):
         """ Returns a list of audio file paths for a performance """
-        return self.associated_audio(pid).values()
+        return list(self.associated_audio(pid).values())
 
     def audio_id(self, pid):
         """ Returns a list of all the audio IDs for associated audio """
-        return self.associated_audio(pid).keys()
+        return list(self.associated_audio(pid).keys())
 
     def start_playback(self):
         """ Loads the performance data and plays back with pygame """

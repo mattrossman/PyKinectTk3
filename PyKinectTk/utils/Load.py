@@ -4,10 +4,10 @@
 
 """
 
-from SQL import *
-from Env import *
+from .SQL import *
+from .Env import *
 
-import Skeleton
+from . import Skeleton
 
 def BodyData(p_id):
     
@@ -101,7 +101,7 @@ class FrameTime:
 
     def timestamps(self):
 
-        return self.frametimes.values()
+        return list(self.frametimes.values())
 
     def __iter__(self):
 

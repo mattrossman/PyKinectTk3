@@ -1,1 +1,1 @@
-from DataCapture import *
+from .DataCapture import *

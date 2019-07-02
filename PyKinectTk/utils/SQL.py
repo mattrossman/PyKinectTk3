@@ -46,7 +46,7 @@ class Database(object):
 
     def delete(self, table, condition):
         self._db.execute("DELETE FROM {} WHERE {}".format(table, condition))
-        print "DELETE FROM {} WHERE {}".format(table, condition)
+        print("DELETE FROM {} WHERE {}".format(table, condition))
         return
 
     def get_tables(self):
@@ -54,7 +54,7 @@ class Database(object):
         return [str(tbl['name']) for tbl in self._db.fetchall()]
 
     def tables(self):
-        return self._tables.keys()
+        return list(self._tables.keys())
 
     def create_table(self, table_name, col):
         """ items in col should be tuples of column name and type """
@@ -136,7 +136,7 @@ BODY_NAME_TABLE         = "tbl_BodyName"
 def CreateDatabase(filename):
     """ Creates the database and adds tables used by all performance data tables """
 
-    import Skeleton
+    from . import Skeleton
     
     db = Database(filename)
 

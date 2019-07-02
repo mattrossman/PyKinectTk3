@@ -5,8 +5,8 @@
     
 """
 
-from SQL import *
-import Skeleton
+from .SQL import *
+from . import Skeleton
 
 from os.path import realpath, abspath, join
 from os.path import isdir, isfile, dirname

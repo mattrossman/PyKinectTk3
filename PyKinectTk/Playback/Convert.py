@@ -8,8 +8,8 @@ import sys
 from ..utils import *
 from ..utils.SQL import *
 
-import Player
-import ProgressBar
+from . import Player
+from . import ProgressBar
 from ..Capture import Writers
 
 class ConvertKinect(Writers.VideoWriter, Player.KinectDataPlayer):

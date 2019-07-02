@@ -17,7 +17,7 @@ class Clicker:
 
     @staticmethod
     def fromPosition():
-        raw_input("Hover over the location you want to click and press enter")
+        input("Hover over the location you want to click and press enter")
         return position()
         
         

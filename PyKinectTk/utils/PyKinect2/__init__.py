@@ -1,2 +1,2 @@
-from PyKinectV2 import *
-from PyKinectRuntime import *
+from .PyKinectV2 import *
+from .PyKinectRuntime import *

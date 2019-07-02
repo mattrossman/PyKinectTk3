@@ -31,11 +31,11 @@ if __name__ == "__main__":
 
     import sys, shlex
 
-    args = sys.argv[1:] if sys.argv[1:] else shlex.split(raw_input("Input: "))
+    args = sys.argv[1:] if sys.argv[1:] else shlex.split(input("Input: "))
 
     if len(args) < 1:
         
-        raw_input( __doc__ )
+        input( __doc__ )
 
         sys.exit()
     
@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
     # Run application
 
-    print "loading..."
+    print("loading...")
 
     try:
 
@@ -103,12 +103,12 @@ if __name__ == "__main__":
 
     except:
 
-        print "Argument %s is not a valid ID" % repr(pid)
+        print("Argument %s is not a valid ID" % repr(pid))
 
         sys.exit()
 
     application(pid, **kwargs).run()
 
-    print
+    print()
     
-    raw_input("Done! Press return to exit")
+    input("Done! Press return to exit")

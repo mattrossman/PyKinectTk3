@@ -35,7 +35,7 @@ class GraphicalBar(ProgressBar):
 class Console(ProgressBar):
     def __init__(self, fn, length=60):
         ProgressBar.__init__(self, length)         
-        print "Converting to video '%s'" % fn
+        print("Converting to video '%s'" % fn)
     def draw(self):
         a, b = self.barsize()
         out = "[%s%s] %.2f%%" % ("=" * a, " " * b, self.x)       

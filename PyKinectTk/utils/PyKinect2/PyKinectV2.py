@@ -468,8 +468,8 @@ IColorFrameSource._methods_ = [
 ##
 
 class Library(object):
-    u'Kinect for Windiws v2 Type Library'
-    name = u'Kinect'
+    'Kinect for Windiws v2 Type Library'
+    name = 'Kinect'
     _reg_typelib_ = ('{7E31D9B1-D4F2-4DEF-999A-6601F7AB0562}', 1, 0)
 
 

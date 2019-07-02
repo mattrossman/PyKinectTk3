@@ -8,7 +8,7 @@
 """
 
 # Playback modules
-from Readers import *
+from .Readers import *
 
 # Utility modules
 from ..utils import Load
@@ -48,7 +48,7 @@ class KinectDataPlayer:
         self.draw = {}
         
         #: Dictionary of stream name -> the frame in that stream currently on screen
-        self._frame_playing = dict([(stream, -1) for stream in self._drawing.keys() if self._drawing[stream] is True])
+        self._frame_playing = dict([(stream, -1) for stream in list(self._drawing.keys()) if self._drawing[stream] is True])
 
         #: Dictionary of stream name -> dictionary of frame numbers and timestamps
         self._frames = {}
@@ -127,7 +127,7 @@ class KinectDataPlayer:
 
         self._head_size = sum(self._size) / 200
 
-        self._largest_clip = max(self._frames.values(), key=lambda x: x.max_time() ).max_time()
+        self._largest_clip = max(list(self._frames.values()), key=lambda x: x.max_time() ).max_time()
 
         self._clip_start  = 0 if self._timeframe[0] is None else int(self._timeframe[0] * self._fps)
 
@@ -143,7 +143,7 @@ class KinectDataPlayer:
     def layers_to_draw(self):
         """ Returns a list of streams being drawn, in order of background to foreground """
         layers = [ 'video','body','depth','audio','info' ]
-        for stream, beingDrawn in self._drawing.items():
+        for stream, beingDrawn in list(self._drawing.items()):
             if not beingDrawn:
                 del layers[layers.index(stream)]
         return layers
@@ -268,7 +268,7 @@ class KinectDataPlayer:
     def draw_info(self, t):
         """ Draws frame time and num """
         y, offset = 25, 25
-        for stream, drawing in self._drawing.items():
+        for stream, drawing in list(self._drawing.items()):
             if drawing and stream is not 'info':
                 try:
                     frame_number = self.frame_time(t, stream)
@@ -290,7 +290,7 @@ class KinectDataPlayer:
             to decide whether or not to render the next frame
         """
         
-        for frame in xrange(self._clip_start, self._clip_length):
+        for frame in range(self._clip_start, self._clip_length):
 
             self._current_frame = frame
 
@@ -320,7 +320,7 @@ class KinectDataPlayer:
 
                         if verbose:
 
-                            print "Error in %s stream: %s" % (stream, e)
+                            print("Error in %s stream: %s" % (stream, e))
 
             # Update the screen
                 

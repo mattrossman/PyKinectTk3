@@ -9,11 +9,12 @@
 
 """
 
-import utils
+from . import utils
 
-from Tkinter import Tk
-from tkFileDialog import askdirectory, asksaveasfilename
+from tkinter import Tk
+from tkinter.filedialog import askdirectory, asksaveasfilename
 from os.path import isdir, realpath
+import importlib
 
 def select_folder():
     root = Tk()
@@ -54,10 +55,10 @@ except:
 
 # Create the selected work environment
     
-reload(utils)
-from utils import *
+importlib.reload(utils)
+from .utils import *
 utils.CreateEnvironment()
 
-import Capture
-import Playback
-import Analysis
+from . import Capture
+from . import Playback
+from . import Analysis

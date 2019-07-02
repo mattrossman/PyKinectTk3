@@ -11,7 +11,7 @@ from ..utils.SQL import *
 from ..utils.PyKinect2 import *  
 
 #: Import a user friendly wrapper for writing video / audio
-from Writers import VideoWriter, AudioWriter
+from .Writers import VideoWriter, AudioWriter
 
 # Use time from stdlib to check timeout
 from time import time as now
@@ -105,7 +105,7 @@ class KinectService():
         """ Reset the timeout timer to 0 and updates user if first frame """
         self._elapsed = now()
         if self._receiving_data is False:
-            print "Receiveing Data...",
+            print("Receiveing Data...", end=' ')
             self._receiving_data = True
 
     def reduce_start_times(self):
@@ -177,7 +177,7 @@ class KinectService():
         
         if Clicking:
 
-            import AutoClick
+            from . import AutoClick
 
             clicker = AutoClick.ThreadClicker(0.5)
 
@@ -332,7 +332,7 @@ class KinectService():
 
         # ;;;;; Done!
         
-        print "done!"
+        print("done!")
         
         if Clicking: clicker.stop()
 
@@ -380,7 +380,7 @@ class KinectService():
     def write_stream_timestamps(self, table, stream):
         """ FRAME_TIME_TABLE """
 
-        for frame, time in stream.items(): 
+        for frame, time in list(stream.items()): 
 
             timestamp = [('performance_id', self._p_id), ('frame', frame), ('time', time )]
 
@@ -446,7 +446,7 @@ class DataStream:
 
     def frames(self):
 
-        return xrange(len(self))
+        return range(len(self))
 
     def last_frame_index(self):
         """ Returns the index of the last frame """
@@ -457,7 +457,7 @@ class DataStream:
         f = open("body.txt","w")
         f.write("Video --- Body\n")
                                                 
-        for frame, time in self.items():
+        for frame, time in list(self.items()):
 
             f.write("%s, %s --- %s\n" % (str(frame), str(time), str(self.body[frame]) ) )
 
@@ -477,7 +477,7 @@ class DataStream:
 
     def subtract(self, time):
         """ Subtract a time value (seconds) from every timestamp """
-        for i, value in self.items():
+        for i, value in list(self.items()):
             self.timestamps[i] = value - time
         return self
         

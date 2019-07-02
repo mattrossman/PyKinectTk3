@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     for i, name in enumerate(recordings):
 
-        print i + 1, "/", len(recordings), name
+        print(i + 1, "/", len(recordings), name)
 
         p_id = PyKinectTk.Load.PerformanceID(name)
 
@@ -24,7 +24,7 @@ if __name__ == "__main__":
         Img = PyKinectTk.Analysis.MotionDetection(p_id, frames)
         Vid = PyKinectTk.Load.VideoData(p_id)
 
-        print "running...",
+        print("running...", end=' ')
 
         while frames <= max(Vid.keys()):
 
@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
             frames += 1
 
-        print "done"
+        print("done")
 
         f.close()
         Img.close()

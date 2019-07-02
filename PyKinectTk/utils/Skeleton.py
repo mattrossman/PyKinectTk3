@@ -119,7 +119,7 @@ class Joint:
             n = 2
         else:
             raise ValueError("Axis must be X, Y, or Z")
-        return dict([(frame, value[n]) for frame, value in self._real.items()])
+        return dict([(frame, value[n]) for frame, value in list(self._real.items())])
     
     def get_all(self, axis, frame=None):
         if axis in "xX":
@@ -273,14 +273,14 @@ class Body:
         return self._time[frame]
 
     def time(self):
-        return self._time.values()
+        return list(self._time.values())
 
     def frames(self):
-        return self._time.keys()
+        return list(self._time.keys())
 
     def all_frame_time(self, timeframe=None):
         if timeframe:
-            return dict([(frame, time) for frame, time in self._time.items() if timeframe[0] <= time <= timeframe[1]])
+            return dict([(frame, time) for frame, time in list(self._time.items()) if timeframe[0] <= time <= timeframe[1]])
         return self._time
 
     def num_bones(self):

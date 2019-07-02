@@ -22,11 +22,11 @@ if __name__ == "__main__":
 
     p_id = PyKinectTk.Load.PerformanceID(name)
 
-    print "%s found. Loading..." % name,
+    print("%s found. Loading..." % name, end=' ')
 
     data = PyKinectTk.Load.BodyData(p_id)
 
-    print "Done"
+    print("Done")
 
     # Choose the data you want to see
 

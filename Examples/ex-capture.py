@@ -16,18 +16,18 @@ if __name__ == "__main__":
 
     # Start capturing data using auto-click
 
-    print "Listening for Kinect data"
+    print("Listening for Kinect data")
     
     App.listen(getVideo=True, Clicking=True, duration=120)
 
     # Add a meaningful name to the recording
     
-    name = raw_input("Would you like to name your recording? ")
+    name = input("Would you like to name your recording? ")
 
     App.NameRecording(name)
 
     # Exit
 
-    raw_input("Recording saved as '%s', press Return to quit" % name)
+    input("Recording saved as '%s', press Return to quit" % name)
 
     App.close()

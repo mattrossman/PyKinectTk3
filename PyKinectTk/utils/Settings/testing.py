@@ -11,8 +11,8 @@ class test:
         if type(key) is slice:
             return key.start, key.stop
 
-a = range(10)
-print a
+a = list(range(10))
+print(a)
 
-print a[slice(*(None,))]
+print(a[slice(*(None,))])
 

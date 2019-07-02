@@ -10,7 +10,7 @@ from matplotlib import animation
 from mpl_toolkits.mplot3d import Axes3D
 
 # PyKinect XEF modules
-import Colour
+from . import Colour
 
 #: 3D View Obj
 class View:
@@ -111,7 +111,7 @@ if __name__ == "__main__":
 
     # debug
 
-    import Load
+    from . import Load
 
     a = View(Load.BodyData(5))
 
