@@ -1,0 +1,4 @@
+opencv
+pyautogui
+comtypes
+matplotlib
